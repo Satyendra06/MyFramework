@@ -5,9 +5,9 @@
     <classes>
       <class name="com.LTM.testcases.MyTestCase1">
         <methods>
+          <include name="Login"/>
           <include name="screenshotOnFail"/>
           <include name="tearDown"/>
-          <include name="LoginToApp"/>
           <include name="dataProvider"/>
           <include name="setupBrowser"/>
         </methods>

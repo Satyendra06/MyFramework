@@ -1,7 +1,5 @@
 package com.LTM.utility;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +10,7 @@ public class BrowserFactory {
 
 	static WebDriver driver;
 	
-	public static WebDriver startBrowser(String browserName, String testURL, String prodURL)
+	public static WebDriver startBrowser(String browserName, String testURL)
 	{
 		if(browserName.equalsIgnoreCase("firefox"))
 		{

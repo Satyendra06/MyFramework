@@ -19,7 +19,7 @@ public class ConfigDataProvider {
 	
 	public String browserName()
 	{
-		return pro.getProperty("browserName");
+		  return pro.getProperty("browserName");
 	}
 	
 	public String testURL()

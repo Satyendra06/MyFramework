@@ -29,10 +29,10 @@ public class LoginPage {
 	@CacheLookup
 	WebElement login_header;
 	
-	// This constructor will initiate the driver	
+	//This constructor will initiate the driver	
 	public LoginPage(WebDriver ldriver)
 		{
-			this.driver=ldriver;
+			driver=ldriver;
 		}
 		
 		public void loginToApp(String uname,String pwd)

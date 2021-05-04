@@ -11,26 +11,32 @@ import com.aventstack.extentreports.Status;
 public class MyTestCase1 extends BaseClass {
 
 	@Test
-	public void LoginToApp() throws InterruptedException, IOException
+	public void Login() throws InterruptedException, IOException
 	{
-		logger=report.createTest("LoginWithInvalidUser");
+		System.out.println("Line 1");
+		logger=report.createTest("LoginToApp");
 		
+		System.out.println("Line 2");
 		logger.log(Status.INFO, "Application Started");
 		// Created Page Object using Page Factory
+		
+		System.out.println("Line 3");
 		LoginPage login=PageFactory.initElements(driver, LoginPage.class);
 		
+		System.out.println("Line 4");
 		logger.log(Status.INFO, "Enter Credentails");
 		
-		login.loginToApp(excel.readExcelData("Credentials", 0, 0), excel.readExcelData("Credentials", 0, 1));
+		//login.loginToApp(excel.readExcelData("Credentials", 0, 0), excel.readExcelData("Credentials", 0, 1));
 		//login.loginToApp(excel.readExcelData("Credentials", 1, 0), excel.readExcelData("Credentials", 1, 1));
-		logger.fail("Log in failed");
+		//logger.fail("Log in failed");
 		
 		//driver.navigate().refresh();
 		
 		//logger1=report.createTest("LoginWithValidUser");
 		//logger1.log(Status.INFO, "Again Enter Credentails");
-		//login.loginToApp(excel.readExcelData("Credentials", 2, 0), excel.readExcelData("Credentials", 2, 1));
+		System.out.println("Line 5");
+		login.loginToApp(excel.readExcelData("Credentials", 2, 0), excel.readExcelData("Credentials", 2, 1));
 		//login.loginToApp(excel.readExcelData("Credentials", 3, 0), excel.readExcelData("Credentials", 3, 1));
-		//logger1.log(Status.PASS, "Logged in successfully");
+		logger.log(Status.PASS, "Logged in successfully");
 	}	
 }

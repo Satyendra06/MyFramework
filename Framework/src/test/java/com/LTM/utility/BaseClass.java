@@ -10,6 +10,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -20,17 +21,20 @@ public class BaseClass {
 
 	public WebDriver driver;
 	public ExcelDataProvider excel;
-	public ConfigDataProvider config;
+	public ConfigDataProvider config_property;
 	public ExtentReports report;
 	public ExtentTest logger;
-	ITestResult result;
+	public ITestResult result;
 	
+	@Parameters({"browser", "URL"})
 	@BeforeClass
-	public void setupBrowser()
+	public void setupBrowser(String browserName, String testURL)
 	{
 		// This will launch the specific browser and URL
 		Reporter.log("Trying to initiate browser and loding URL", true);
-		driver=BrowserFactory.startBrowser(config.browserName(), config.testURL(), config.prodURL());
+		//driver=BrowserFactory.startBrowser(config_property.browserName(), config_property.testURL());
+		
+		driver=BrowserFactory.startBrowser(browserName, testURL);
 		
 		Reporter.log("Browser and URL is up and running", true);
 	}
@@ -45,8 +49,9 @@ public class BaseClass {
 	public void dataProvider() throws IOException
 	{
 		Reporter.log("Configuration is ready from Excel file", true);
+		
 		excel=new ExcelDataProvider();
-		config=new ConfigDataProvider();
+		config_property=new ConfigDataProvider();
 		
 		// To generate HTML reports
 		Reporter.log("Configuration is ready to generate HTML reports", true);
