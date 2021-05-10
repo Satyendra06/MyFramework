@@ -58,20 +58,14 @@ public class BaseClass {
 		Reporter.log("Configuration setup is OK", true);
 		
 		// To generate HTML reports
-		System.out.println("Line 1");
 		Reporter.log("Configuration is ready to generate HTML reports", true);
 	
-		System.out.println("Line 2");
 		String ReportPath=System.getProperty("user.dir") + "./Reports/VPN-"+ Helper.getCurrentDateTime() +".html";
 		html=new ExtentHtmlReporter(new File(ReportPath));
-		System.out.println("Line 3");
 		
 		report=new ExtentReports();
-		System.out.println("Line 4");
 		report.attachReporter(html);
-		//FileHandler.copy(new File (report), new File (ReportPath));
-				
-		System.out.println("Line 5");
+
 		Reporter.log("HTML Report generated successfully", true);
 	}
 	

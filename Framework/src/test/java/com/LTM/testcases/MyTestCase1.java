@@ -12,8 +12,6 @@ public class MyTestCase1 extends BaseClass {
 	@Test
 	public void Login() throws InterruptedException, IOException
 	{
-		//ExtentReports report=new ExtentReports();
-		//report.attachReporter(html);
 		logger=report.createTest("LoginVPN");
 		
 		logger.log(Status.INFO, "Application Started");
@@ -35,6 +33,5 @@ public class MyTestCase1 extends BaseClass {
 		login.loginToApp(excel.readExcelData("Credentials", 2, 0), excel.readExcelData("Credentials", 2, 1));
 		//login.loginToApp(excel.readExcelData("Credentials", 3, 0), excel.readExcelData("Credentials", 3, 1));
 		logger.log(Status.PASS, "Logged in successfully");
-		//dataProvider();
 	}	
 }
