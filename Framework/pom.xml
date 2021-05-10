@@ -32,14 +32,13 @@
         	<version>3.0.0-M4</version>
         	<configuration>
           		<suiteXmlFiles>
-            		<suiteXmlFile>XMLFiles/testng.xml</suiteXmlFile>
+            		<suiteXmlFile>${XMLFile}</suiteXmlFile>
           		</suiteXmlFiles>
-          		
           		<systemPropertyVariables>
           			<setupBrowser>${browser}</setupBrowser>
           			<setupURL>${URL}</setupURL>
           		</systemPropertyVariables>
-        	</configuration>
+          	</configuration>
       	</plugin>
    </plugins>
  </build>

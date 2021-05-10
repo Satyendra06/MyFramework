@@ -20,7 +20,7 @@ public class Helper {
 		TakesScreenshot ss=(TakesScreenshot)driver;
 		File src=ss.getScreenshotAs(OutputType.FILE);
 		
-		String ScreenshotPath = System.getProperty("user.dir") + "./Screenshots/"+ getCurrentDateTime() +".png";
+		String ScreenshotPath = System.getProperty("user.dir") + "./Screenshots/VPN-"+ getCurrentDateTime() +".png";
 		
 		FileHandler.copy(src, new File(ScreenshotPath));
 		System.out.println("Screenshot Captured Successfully");

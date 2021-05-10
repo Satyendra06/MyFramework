@@ -22,17 +22,19 @@ public class BaseClass {
 	public WebDriver driver;
 	public ExcelDataProvider excel;
 	public ConfigDataProvider config_property;
-	public ExtentReports report;
-	public ExtentTest logger;
+	public static ExtentHtmlReporter html;
+	public static ExtentReports report;
+	public static ExtentTest logger;
 	public ITestResult result;
 	
 	@Parameters({"browser", "URL"})
 	@BeforeClass
 	public void setupBrowser(String browserName, String testURL)
+	//public void setupBrowser()
 	{
 		// This will launch the specific browser and URL
 		Reporter.log("Trying to initiate browser and loding URL", true);
-		//driver=BrowserFactory.startBrowser(config_property.browserName(), config_property.testURL());
+		//driver=BrowserFactory.startBrowser("chrome", "https://203.123.47.114:10443/remote/login?lang=en");
 		
 		driver=BrowserFactory.startBrowser(browserName, testURL);
 		
@@ -53,17 +55,28 @@ public class BaseClass {
 		excel=new ExcelDataProvider();
 		config_property=new ConfigDataProvider();
 		
-		// To generate HTML reports
-		Reporter.log("Configuration is ready to generate HTML reports", true);
-		ExtentHtmlReporter html=new ExtentHtmlReporter(new File ("./Reports/VPN-"+ Helper.getCurrentDateTime() +".html"));
-		report=new ExtentReports();
-		report.attachReporter(html);
-		
 		Reporter.log("Configuration setup is OK", true);
+		
+		// To generate HTML reports
+		System.out.println("Line 1");
+		Reporter.log("Configuration is ready to generate HTML reports", true);
+	
+		System.out.println("Line 2");
+		String ReportPath=System.getProperty("user.dir") + "./Reports/VPN-"+ Helper.getCurrentDateTime() +".html";
+		html=new ExtentHtmlReporter(new File(ReportPath));
+		System.out.println("Line 3");
+		
+		report=new ExtentReports();
+		System.out.println("Line 4");
+		report.attachReporter(html);
+		//FileHandler.copy(new File (report), new File (ReportPath));
+				
+		System.out.println("Line 5");
+		Reporter.log("HTML Report generated successfully", true);
 	}
-
+	
 	@AfterMethod
-	public void screenshotOnFail(ITestResult result) throws IOException
+	public void attachScreenshot(ITestResult result) throws IOException
 	{
 		if(result.getStatus()==ITestResult.FAILURE)
 		{
@@ -71,7 +84,7 @@ public class BaseClass {
 			Reporter.log("Trying to capture screenshot on fail", true);
 			logger.fail("Test Case failed", MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 			
-			Reporter.log("Reports generated on pass", true);
+			Reporter.log("Screenshot captured on fail", true);
 		}
 		else if(result.getStatus()==ITestResult.SUCCESS)
 		{
@@ -79,12 +92,12 @@ public class BaseClass {
 			Reporter.log("Trying to capture screenshot on pass", true);
 			logger.pass("Test Case passed", MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 			
-			Reporter.log("Reports generated on pass", true);
+			Reporter.log("Screenshot captureed on pass", true);
 		}
-		
 		report.flush();
 	}
 }
+
 	
 	
 	

@@ -1,7 +1,6 @@
 package com.LTM.testcases;
 
 import java.io.IOException;
-
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import com.LTM.pages.LoginPage;
@@ -13,17 +12,15 @@ public class MyTestCase1 extends BaseClass {
 	@Test
 	public void Login() throws InterruptedException, IOException
 	{
-		System.out.println("Line 1");
-		logger=report.createTest("LoginToApp");
+		//ExtentReports report=new ExtentReports();
+		//report.attachReporter(html);
+		logger=report.createTest("LoginVPN");
 		
-		System.out.println("Line 2");
 		logger.log(Status.INFO, "Application Started");
-		// Created Page Object using Page Factory
 		
-		System.out.println("Line 3");
+		// Created Page Object using Page Factory
 		LoginPage login=PageFactory.initElements(driver, LoginPage.class);
 		
-		System.out.println("Line 4");
 		logger.log(Status.INFO, "Enter Credentails");
 		
 		//login.loginToApp(excel.readExcelData("Credentials", 0, 0), excel.readExcelData("Credentials", 0, 1));
@@ -34,9 +31,10 @@ public class MyTestCase1 extends BaseClass {
 		
 		//logger1=report.createTest("LoginWithValidUser");
 		//logger1.log(Status.INFO, "Again Enter Credentails");
-		System.out.println("Line 5");
+		//System.out.println("Line 5");
 		login.loginToApp(excel.readExcelData("Credentials", 2, 0), excel.readExcelData("Credentials", 2, 1));
 		//login.loginToApp(excel.readExcelData("Credentials", 3, 0), excel.readExcelData("Credentials", 3, 1));
 		logger.log(Status.PASS, "Logged in successfully");
+		//dataProvider();
 	}	
 }
