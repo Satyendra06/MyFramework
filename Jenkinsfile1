@@ -1,0 +1,37 @@
+pipeline 
+{ 
+    agent any 
+    stages 
+	{
+        stage('Build') 
+		{ 
+            	  steps 
+		    { 
+                	input("Do you want to continue")
+            	    }
+        	}
+        parallel {
+                  stage('Test1')
+		                {
+            	        steps 
+		                    { 
+                	        echo "This is test1 process"
+            	            }
+        	          }
+                    stage('Test2')
+		                {
+            	        steps 
+		                    { 
+                	        echo "This is test2 process"
+            	            }
+        	          }
+          }
+        stage('Deploy') 
+		{
+            	  steps 
+		    { 
+                	echo "This is deploy process"
+            	    }
+        	}
+    	}
+}
