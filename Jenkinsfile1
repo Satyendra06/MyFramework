@@ -10,7 +10,9 @@ pipeline
                 	input("Do you want to continue")
             	    }
         	}
-        parallel {
+        stage('Test') 
+	{ 
+	parallel {
                   stage('Test1')
 		                {
             	        steps 
@@ -25,6 +27,7 @@ pipeline
                 	        echo "This is test2 process"
             	            }
         	          }
+		}
           }
         stage('Deploy') 
 		{
